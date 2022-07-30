@@ -3,13 +3,13 @@ import { ICar } from '../interfaces/ICar';
 import GenericModel from './Generic.model';
 
 const carMongooseSchema = new Schema<ICar>({
-  buyValue: Number,
-  color: String,
-  doorsQty: Number,
   model: String,
-  seatsQty: Number,
-  status: Boolean,
   year: Number,
+  color: String,
+  buyValue: Number,
+  seatsQty: Number,
+  doorsQty: Number,
+  status: Boolean,
 });
 
 class Lens extends GenericModel<ICar> {
