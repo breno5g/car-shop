@@ -29,13 +29,13 @@ export default class FrameController {
     return res.status(200).json(allFrames);
   }
 
-  public async delete(req:Request, res: Response<ICar | null>) {
-    const deletedFrame = await this._service.delete(req.params.id);
-    return res.status(200).json(deletedFrame);
-  }
+  // public async delete(req:Request, res: Response<ICar | null>) {
+  //   const deletedFrame = await this._service.delete(req.params.id);
+  //   return res.status(200).json(deletedFrame);
+  // }
 
-  public async update(_id: string, obj: ICar): Promise<ICar | null> {
-    const updated = await this._service.update(_id, obj);
-    return updated;
-  }
+  // public async update(_id: string, obj: ICar): Promise<ICar | null> {
+  //   const updated = await this._service.update(_id, obj);
+  //   return updated;
+  // }
 }
