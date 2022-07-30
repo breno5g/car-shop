@@ -9,10 +9,13 @@ describe('Car Model', () => {
 
 	before(() => {
 		sinon.stub(Model, 'create').resolves(carMockWithId);
-		sinon.stub(Model, 'findOne').resolves(carMockWithId);
+		sinon.stub(Model, 'findOne')
+			.onCall(0).resolves(carMockWithId).onCall(1).resolves(null);
     sinon.stub(Model, "find").resolves(carsMockArray)
-    sinon.stub(Model, "findByIdAndDelete").resolves(carMock)
-    sinon.stub(Model, "findByIdAndUpdate").resolves(carMock)
+    sinon.stub(Model, "findByIdAndDelete")
+			.onCall(0).resolves(carMock).onCall(1).resolves(null);
+    sinon.stub(Model, "findByIdAndUpdate")
+			.onCall(0).resolves(carMock).onCall(1).resolves(null);
 	});
 
 	after(() => {
@@ -56,7 +59,7 @@ describe('Car Model', () => {
 
 		it('_id not found', async () => {
 			try {
-				await carModel.readOne('123ERRADO');
+				await carModel.delete('123ERRADO');
 			} catch (error: any) {
 				expect(error.message).to.be.eq('InvalidMongoId');
 			}
@@ -71,7 +74,7 @@ describe('Car Model', () => {
 
 		it('_id not found', async () => {
 			try {
-				await carModel.readOne('123ERRADO');
+				await carModel.update('123ERRADO', carMock);
 			} catch (error: any) {
 				expect(error.message).to.be.eq('InvalidMongoId');
 			}

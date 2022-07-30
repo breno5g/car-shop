@@ -20,7 +20,7 @@ class CarService implements IService<ICar> {
 
   public async read(): Promise<ICar[] | null> {
     const allCars = await this._car.read();
-    if (!allCars) throw new Error('EntityNotFound');
+    // if (!allCars) throw new Error('EntityNotFound');
     return allCars;
   }
 
